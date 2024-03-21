@@ -1,0 +1,12 @@
+
+docker network create app-network-website
+
+docker run -d --name mongodb -v data:/data/db -p 27019:27017 --network=app-network-website mongo
+
+docker build -t app .
+
+docker run -d --name app --network=app-network-website -p 3000:3000 app
+
+
+
+
